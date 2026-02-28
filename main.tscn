@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene format=3 uid="uid://diorvxu4fenwg"]
 
 [ext_resource type="Texture2D" uid="uid://d3a6m2eeu1f0j" path="res://assets/submarine.png" id="1_ig7tw"]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" unique_id=878685594]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=320781666]
 
-[node name="Submarine" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Submarine" type="Sprite2D" parent="CharacterBody2D" unique_id=1743053593]
 position = Vector2(566, 339)
+rotation = -1.6458455
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_ig7tw")
