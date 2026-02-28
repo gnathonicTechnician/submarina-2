@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene load_steps=3 format=3 uid="uid://diorvxu4fenwg"]
 
-[ext_resource type="Texture2D" uid="uid://d3a6m2eeu1f0j" path="res://assets/submarine.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://2udgh77141xc" path="res://assets/submarine_flip.png" id="1_ig7tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(239.5, 91.5)
 
 [node name="Node" type="Node"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="Submarine" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(566, 339)
-scale = Vector2(0.25, 0.25)
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(149.00002, 71.000015)
+scale = Vector2(0.4536741, 0.5373444)
 texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(152, 67.25)
+shape = SubResource("RectangleShape2D_0xm2m")
