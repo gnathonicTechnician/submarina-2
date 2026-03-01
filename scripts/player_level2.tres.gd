@@ -28,3 +28,8 @@ func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 
 func _on_checkpoint_body_entered(body: Node2D) -> void:
 	print("You won!")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	killPlayer()
+	Global_SCORE.add_score(-5)
