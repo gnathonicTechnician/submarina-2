@@ -57,7 +57,7 @@ z_index = -1
 texture_repeat = 2
 position = Vector2(828, 57)
 
-[node name="Enemy" parent="." instance=ExtResource("4_wu3l7")]
+[node name="Barracuda" parent="." instance=ExtResource("4_wu3l7")]
 position = Vector2(1649, 52)
 
 [connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
