@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbmffecljovp5"]
+
+[ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="1_4flbx"]
+
+[sub_resource type="GDScript" id="GDScript_ig7tw"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 500.0
+
+
+func _process(delta: float) -> void:	
+	position.x += 25
+	
+	var direction := Input.get_axis(\"up\", \"down\")
+	if direction:
+		velocity.y = direction * SPEED
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+		
+	move_and_slide()
+	
+func killPlayer():
+	position = %RespawnPoint.position
+
+func _on_kill_zone_top_body_entered(body: Node2D) -> void:
+	killPlayer()
+
+func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
+	killPlayer()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(203, 105)
+
+[node name="Player" type="CharacterBody2D"]
+script = SubResource("GDScript_ig7tw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(828, 57)
+zoom = Vector2(0.5, 0.5)
+limit_top = -199
+limit_bottom = 201
+position_smoothing_speed = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(186.25879, 45.064323)
+scale = Vector2(0.34567767, 0.39638957)
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(181.5, 47.5)
+shape = SubResource("RectangleShape2D_0xm2m")
