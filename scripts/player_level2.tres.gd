@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 500.0
+const SPEED = 600.0
 
 func _ready():
 	add_to_group("Player")
 
 func _process(delta: float) -> void:	
-	position.x += 25
+	position.x += 35
 	
 	var direction := Input.get_axis("up", "down")
 	if direction:
@@ -27,4 +27,4 @@ func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 
 
 func _on_checkpoint_body_entered(body: Node2D) -> void:
-	get_tree().change_scene_to_file("res://twilight.tscn")
+	print("You won!")

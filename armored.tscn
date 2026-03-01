@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://sjk7wbg1fhdg"]
+
+[ext_resource type="Texture2D" uid="uid://bu3vonxlxaqvb" path="res://assets/armoredfishadult-Lvl2-Angt.png" id="1_rsf20"]
+
+[sub_resource type="GDScript" id="GDScript_nb62k"]
+resource_name = "armored"
+script/source = "extends CharacterBody2D
+
+const SPEED = 400.0
+
+func _physics_process(delta: float) -> void:
+	velocity.x = -SPEED
+	
+	move_and_slide()
+	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"Player\"):
+		body.killPlayer()
+		if Global_SCORE.score > 0:
+			Global_SCORE.add_score(-5)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmsxy"]
+size = Vector2(464.5, 230.25)
+
+[node name="armored" type="CharacterBody2D"]
+script = SubResource("GDScript_nb62k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(120.0147, -22.666672)
+scale = Vector2(0.68166816, 0.7047101)
+texture = ExtResource("1_rsf20")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(124, -15.875)
+shape = SubResource("RectangleShape2D_jmsxy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

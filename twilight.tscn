@@ -1,9 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dxx2m3t6r3xsh"]
 
-[ext_resource type="Script" uid="uid://h732yfdoy0uo" path="res://scripts/player.tres.gd" id="1_1dc00"]
+[ext_resource type="Script" uid="uid://do25fa5oa03p5" path="res://scripts/player_level2.tres.gd" id="1_mvn0n"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="2_k3522"]
 [ext_resource type="Script" uid="uid://bsrvkwekb1g6w" path="res://scripts/label_txt.tres.gd" id="3_42i30"]
-[ext_resource type="Script" uid="uid://3c5u76uoquhs" path="res://scripts/enemie_spawner.tres.gd" id="4_uosuk"]
 [ext_resource type="PackedScene" uid="uid://c030viellqg35" path="res://background_twilight.tscn" id="5_wtgpq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
@@ -19,13 +18,38 @@ size = Vector2(107793, 254)
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="GDScript" id="GDScript_rhulv"]
+resource_name = "enemy_spawner_level2"
+script/source = "extends Node2D
+
+@onready var player_node = get_tree().get_first_node_in_group(\"Player\")
+@onready var timer: Timer = $Timer
+
+var snail_scene = preload(\"res://snail.tscn\")
+var armored_scene = preload(\"res://armored.tscn\")
+
+func _ready() -> void:
+	timer.wait_time = 3.0
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
+	
+func _on_timer_timeout():
+	var enemies = [snail_scene, armored_scene]
+	var enemy = enemies.pick_random().instantiate()
+	var random_x = player_node.global_position.x + 3000
+	var random_y = randf_range(-600, 600)
+	enemy.position = Vector2(random_x, random_y)
+	
+	add_child(enemy)
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
 size = Vector2(196, 1627)
 
 [node name="Twilight" type="Node"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_1dc00")
+script = ExtResource("1_mvn0n")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(828, 57)
@@ -69,7 +93,7 @@ label_settings = SubResource("LabelSettings_nfg43")
 script = ExtResource("3_42i30")
 
 [node name="enemy spawner" type="Node2D" parent="."]
-script = ExtResource("4_uosuk")
+script = SubResource("GDScript_rhulv")
 
 [node name="Timer" type="Timer" parent="enemy spawner"]
 
