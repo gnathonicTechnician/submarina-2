@@ -16,6 +16,8 @@ size = Vector2(106995, 221.25)
 size = Vector2(107793, 254)
 
 [sub_resource type="LabelSettings" id="LabelSettings_btojs"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
 size = Vector2(196, 1627)
