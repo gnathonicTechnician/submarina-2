@@ -15,9 +15,7 @@ size = Vector2(106995, 221.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(107793, 254)
 
-[sub_resource type="LabelSettings" id="LabelSettings_nfg43"]
-font_size = 30
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_btojs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
 size = Vector2(196, 1627)
@@ -70,7 +68,7 @@ position = Vector2(828, 57)
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_nfg43")
+label_settings = SubResource("LabelSettings_btojs")
 script = ExtResource("4_btojs")
 
 [node name="enemy spawner" type="Node2D" parent="."]
