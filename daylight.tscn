@@ -12,7 +12,7 @@ size = Vector2(203, 83)
 size = Vector2(106932, 221.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(107852, 254)
+size = Vector2(107793, 254)
 
 [node name="Node" type="Node"]
 
@@ -45,7 +45,7 @@ shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)"]
 z_index = -1
-position = Vector2(53474, 864)
+position = Vector2(53503.5, 864)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="RespawnPoint" type="Node2D" parent="."]
