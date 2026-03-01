@@ -21,7 +21,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-GlobalScore="*res://global_score.gd"
+Global_SCORE="*res://globalSCORE.gd"
 
 [input]
 
