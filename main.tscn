@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene format=3 uid="uid://diorvxu4fenwg"]
 
 [ext_resource type="Texture2D" uid="uid://2udgh77141xc" path="res://assets/submarine_flip.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_0xm2m"]
 
 [sub_resource type="GDScript" id="GDScript_ig7tw"]
 script/source = "extends CharacterBody2D
@@ -15,22 +16,29 @@ func _process(delta: float) -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(239.5, 91.5)
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" unique_id=601100096]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1246913800]
 script = SubResource("GDScript_ig7tw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1508139152]
 position = Vector2(149.00002, 71.000015)
 scale = Vector2(0.4536741, 0.5373444)
 texture = ExtResource("1_ig7tw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=126903295]
 position = Vector2(152, 67.25)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=498416952]
 position = Vector2(523, 57)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1940172641]
+
+[node name="GhostLeviathan" type="Sprite2D" parent="." unique_id=268174024]
+position = Vector2(674, 237.00009)
+scale = Vector2(0.31166664, 0.337037)
+texture = ExtResource("2_0xm2m")
