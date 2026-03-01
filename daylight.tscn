@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene load_steps=11 format=3 uid="uid://diorvxu4fenwg"]
 
 [ext_resource type="Script" uid="uid://h732yfdoy0uo" path="res://player.tres.gd" id="1_btojs"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="1_nfg43"]
@@ -19,7 +19,10 @@ size = Vector2(107793, 254)
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[node name="Node" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
+size = Vector2(196, 1627)
+
+[node name="Daylight" type="Node"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_btojs")
@@ -70,10 +73,17 @@ offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_nfg43")
 script = ExtResource("4_btojs")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="enemy spawner" type="Node2D" parent="."]
 script = ExtResource("5_wu3l7")
 
-[node name="Timer" type="Timer" parent="Node2D"]
+[node name="Timer" type="Timer" parent="enemy spawner"]
+
+[node name="checkpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
+position = Vector2(53952, 67)
+shape = SubResource("RectangleShape2D_btojs")
 
 [connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
 [connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
+[connection signal="body_entered" from="checkpoint" to="Player" method="_on_checkpoint_body_entered"]

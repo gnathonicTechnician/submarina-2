@@ -24,3 +24,7 @@ func _on_kill_zone_top_body_entered(body: Node2D) -> void:
 
 func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 	killPlayer()
+
+
+func _on_checkpoint_body_entered(body: Node2D) -> void:
+	print("You won!")
