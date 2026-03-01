@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c43fqvvdvbnts"]
+[gd_scene load_steps=0 format=3 uid="uid://c43fqvvdvbnts"]
 
 [ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="2_1bvp3"]
