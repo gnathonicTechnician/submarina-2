@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://2iaxs05udj8h"]
+
+[ext_resource type="Script" uid="uid://bik5newptq47w" path="res://scripts/player_level3.tres.gd" id="1_clfmc"]
+[ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="2_vb53u"]
+[ext_resource type="Script" uid="uid://bsrvkwekb1g6w" path="res://scripts/label_txt.tres.gd" id="3_0r25i"]
+[ext_resource type="PackedScene" uid="uid://cyujgs73ed0m2" path="res://midnight_background.tscn" id="5_clfmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(212, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(106995, 221.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(107793, 254)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nfg43"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_clfmc"]
+resource_name = "enemy_spawner_level3"
+script/source = "extends Node2D
+
+@onready var player_node = get_tree().get_first_node_in_group(\"Player\")
+@onready var timer: Timer = $Timer
+
+var fih_scene = preload(\"res://fih.tscn\")
+var blobgulper_scene = preload(\"res://blobgulper.tscn\")
+
+func _ready() -> void:
+	timer.wait_time = 3.0
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
+	
+func _on_timer_timeout():
+	var enemies = [fih_scene, blobgulper_scene]
+	var enemy = enemies.pick_random().instantiate()
+	var random_x = player_node.global_position.x + 3000
+	var random_y = randf_range(-600, 600)
+	enemy.position = Vector2(random_x, random_y)
+	
+	add_child(enemy)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
+size = Vector2(196, 1627)
+
+[node name="Twilight" type="Node"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_clfmc")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(828, 57)
+zoom = Vector2(0.5, 0.5)
+limit_top = -199
+limit_bottom = 201
+position_smoothing_speed = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(186.25879, 45.064323)
+scale = Vector2(0.34567767, 0.39638957)
+texture = ExtResource("2_vb53u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(186, 52)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="kill zone (top)" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)"]
+position = Vector2(53085.5, -793.625)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="kill zone (bottom)" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)"]
+z_index = -1
+position = Vector2(53503.5, 864)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="RespawnPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(154, 72)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_nfg43")
+script = ExtResource("3_0r25i")
+
+[node name="enemy spawner" type="Node2D" parent="."]
+script = SubResource("GDScript_clfmc")
+
+[node name="Timer" type="Timer" parent="enemy spawner"]
+
+[node name="checkpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
+position = Vector2(53952, 67)
+shape = SubResource("RectangleShape2D_btojs")
+
+[node name="midnight_background" parent="." instance=ExtResource("5_clfmc")]
+z_index = -1
+
+[connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
+[connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
+[connection signal="body_entered" from="checkpoint" to="Player" method="_on_checkpoint_body_entered"]

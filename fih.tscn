@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1ttlcydlseva"]
+[gd_scene load_steps=4 format=3 uid="uid://b0afvsdbg7oxo"]
 
-[ext_resource type="Texture2D" uid="uid://400a6rbviklf" path="res://assets/snailapus-lvl1fih-points.png" id="1_03g26"]
+[ext_resource type="Texture2D" uid="uid://dfxcsvw5yej53" path="res://assets/fihfihfih-lvl3fih-points.png" id="1_qsjtx"]
 
-[sub_resource type="GDScript" id="GDScript_kwcx3"]
-resource_name = "snail"
+[sub_resource type="GDScript" id="GDScript_qsjtx"]
+resource_name = "fih"
 script/source = "extends CharacterBody2D
 
 
-const SPEED = 400.0
+const SPEED = 450.0
 
 func _physics_process(delta: float) -> void:
 	velocity.x = -SPEED
@@ -25,18 +25,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmsxy"]
 size = Vector2(279, 256.5)
 
-[node name="snail" type="CharacterBody2D"]
-script = SubResource("GDScript_kwcx3")
+[node name="fih" type="CharacterBody2D"]
+script = SubResource("GDScript_qsjtx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(139.04411, -85.5)
 scale = Vector2(0.5636317, 0.53442025)
-texture = ExtResource("1_03g26")
+texture = ExtResource("1_qsjtx")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(139.5, -90.75)
+position = Vector2(138, -79)
 shape = SubResource("RectangleShape2D_jmsxy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

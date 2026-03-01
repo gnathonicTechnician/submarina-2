@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyujgs73ed0m2"]
+
+[ext_resource type="Texture2D" uid="uid://c6kvo26kuiayq" path="res://assets/midnightzone-bg.png" id="1_h0hf8"]
+
+[node name="background" type="Node2D"]
+texture_filter = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+texture_repeat = 2
+repeat_size = Vector2(1400, 0)
+repeat_times = 100
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_h0hf8")

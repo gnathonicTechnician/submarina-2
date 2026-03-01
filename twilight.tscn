@@ -929,3 +929,4 @@ shape = SubResource("RectangleShape2D_cbvpm")
 [connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
 [connection signal="body_entered" from="checkpoint" to="Player" method="_on_checkpoint_body_entered"]
 [connection signal="body_entered" from="TileMapLayer/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/Area2D2" to="Player" method="_on_area_2d_2_body_entered"]

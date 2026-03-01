@@ -23,7 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmsxy"]
-size = Vector2(464.5, 230.25)
+size = Vector2(485, 238)
 
 [node name="armored" type="CharacterBody2D"]
 script = SubResource("GDScript_nb62k")
