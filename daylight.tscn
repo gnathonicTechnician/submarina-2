@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene load_steps=10 format=3 uid="uid://diorvxu4fenwg"]
 
 [ext_resource type="Script" uid="uid://h732yfdoy0uo" path="res://player.tres.gd" id="1_btojs"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="1_nfg43"]
 [ext_resource type="PackedScene" uid="uid://6ekbeeh06jcm" path="res://background.tscn" id="4_6q6r2"]
-[ext_resource type="PackedScene" uid="uid://dw6nse3dhbco0" path="res://barracuda.tscn" id="4_wu3l7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(203, 83)
@@ -13,6 +12,43 @@ size = Vector2(106995, 221.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(107793, 254)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nfg43"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_nfg43"]
+resource_name = "Label_txt"
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	text = \"Score: \" + str(GlobalScore.score)
+"
+
+[sub_resource type="GDScript" id="GDScript_tc7ki"]
+resource_name = "enemie_spawner"
+script/source = "extends Node2D
+
+@onready var player_node = get_tree().get_first_node_in_group(\"Player\")
+@onready var timer: Timer = $Timer
+
+var barracuda_scene = preload(\"res://barracuda.tscn\")
+
+func _ready() -> void:
+	timer.wait_time = 3.0
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
+	
+func _on_timer_timeout():
+	var enemy = barracuda_scene.instantiate()
+	var random_x = player_node.global_position.x + 3000
+	var random_y = randf_range(-600, 600)
+	enemy.position = Vector2(random_x, random_y)
+	
+	add_child(enemy)
+"
 
 [node name="Node" type="Node"]
 
@@ -57,8 +93,18 @@ z_index = -1
 texture_repeat = 2
 position = Vector2(828, 57)
 
-[node name="Barracuda" parent="." instance=ExtResource("4_wu3l7")]
-position = Vector2(1649, 52)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_nfg43")
+script = SubResource("GDScript_nfg43")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = SubResource("GDScript_tc7ki")
+
+[node name="Timer" type="Timer" parent="Node2D"]
 
 [connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
 [connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
