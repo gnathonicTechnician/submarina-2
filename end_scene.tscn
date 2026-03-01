@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ilifh6vqxlk"]
+
+[ext_resource type="Texture2D" uid="uid://d4jc4s1lmgsl6" path="res://assets/joshperal-lvl3fih-points.png" id="1_3wcc1"]
+
+[node name="End scene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(560, 323)
+scale = Vector2(0.54, 0.44714287)
+texture = ExtResource("1_3wcc1")
