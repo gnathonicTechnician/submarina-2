@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://h732yfdoy0uo" path="res://player.tres.gd" id="1_btojs"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="1_nfg43"]
-[ext_resource type="PackedScene" uid="uid://6ekbeeh06jcm" path="res://background.tscn" id="4_6q6r2"]
+[ext_resource type="PackedScene" uid="uid://6ekbeeh06jcm" path="res://background_daylight.tscn" id="4_6q6r2"]
 [ext_resource type="Script" uid="uid://bsrvkwekb1g6w" path="res://label_txt.tres.gd" id="4_btojs"]
 [ext_resource type="Script" uid="uid://3c5u76uoquhs" path="res://enemie_spawner.tres.gd" id="5_wu3l7"]
 
