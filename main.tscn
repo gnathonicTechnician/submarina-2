@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene load_steps=7 format=3 uid="uid://diorvxu4fenwg"]
 
 [ext_resource type="Texture2D" uid="uid://2udgh77141xc" path="res://assets/submarine_flip.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_0xm2m"]
@@ -7,6 +7,9 @@
 script/source = "extends CharacterBody2D
 
 const SPEED = 500.0
+
+func _ready() -> void:
+	add_to_group(\"Player\")
 
 func _process(delta: float) -> void:
 	velocity.x += 5
@@ -18,30 +21,25 @@ func _process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
 	move_and_slide()
+	
+func killPlayer():
+	position = %RespawnPoint.position
+
+func _on_kill_zone_top_body_entered(body: Node2D) -> void:
+	killPlayer()
+
+func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
+	killPlayer()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(239.5, 91.5)
 
-[sub_resource type="GDScript" id="GDScript_0xm2m"]
-script/source = "extends Area2D
-
-@onready var timer: Timer = $Timer
-
-# Called when the node enters the scene tree for the first time.
-func _on_body_entered(body: Node2D) -> void:
-	print(\"you died\")
-	timer.start()
-	
-func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(12090, 122)
+size = Vector2(9533.5, 260.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(11953.5, 123)
+size = Vector2(9649.5, 234)
 
 [node name="Node" type="Node"]
 
@@ -58,10 +56,9 @@ position = Vector2(152, 67.25)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(523, 57)
+position = Vector2(828, 57)
 zoom = Vector2(0.5, 0.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+position_smoothing_speed = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -70,20 +67,21 @@ position = Vector2(674, 237.00009)
 scale = Vector2(0.31166664, 0.337037)
 texture = ExtResource("2_0xm2m")
 
-[node name="Kill zone (bottom)" type="Area2D" parent="."]
-position = Vector2(-81, 731)
-script = SubResource("GDScript_0xm2m")
+[node name="kill zone (top)" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill zone (bottom)"]
-position = Vector2(6055, 51)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)"]
+position = Vector2(4394.25, -749.75)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Timer" type="Timer" parent="Kill zone (bottom)"]
+[node name="kill zone (bottom)" type="Area2D" parent="."]
 
-[node name="Kill zone (top)" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill zone (top)"]
-position = Vector2(5982.25, -663.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)"]
+position = Vector2(4465.25, 808)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="Timer" type="Timer" parent="Kill zone (top)"]
+[node name="RespawnPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(154, 72)
+
+[connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
+[connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
