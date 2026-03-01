@@ -26,17 +26,13 @@ func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 	killPlayer()
 
 
-func _on_checkpoint_body_entered(body: Node2D) -> void:
-	print("You won!")
+func _on_kill_zone_top_end_body_entered(body: Node2D) -> void:
+	killPlayer()
+
+
+func _on_kill_zone_bottom_end_body_entered(body: Node2D) -> void:
+	killPlayer()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	killPlayer()
-	if Global_SCORE.score > 0:
-			Global_SCORE.add_score(-5)
-
-
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	killPlayer()
-	if Global_SCORE.score > 0:
-			Global_SCORE.add_score(-5)
+	get_tree().change_scene_to_file("res://midnight.tscn")

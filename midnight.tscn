@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://2iaxs05udj8h"]
+[gd_scene load_steps=14 format=3 uid="uid://2iaxs05udj8h"]
 
 [ext_resource type="Script" uid="uid://bik5newptq47w" path="res://scripts/player_level3.tres.gd" id="1_clfmc"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="2_vb53u"]
 [ext_resource type="Script" uid="uid://bsrvkwekb1g6w" path="res://scripts/label_txt.tres.gd" id="3_0r25i"]
 [ext_resource type="PackedScene" uid="uid://cyujgs73ed0m2" path="res://midnight_background.tscn" id="5_clfmc"]
+[ext_resource type="Texture2D" uid="uid://lyk4dpwo4esy" path="res://assets/pearlofgayness.png" id="5_vb53u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(212, 108)
@@ -43,8 +44,14 @@ func _on_timer_timeout():
 	add_child(enemy)
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
-size = Vector2(196, 1627)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0r25i"]
+size = Vector2(280, 294)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clfmc"]
+size = Vector2(378, 346)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb53u"]
+size = Vector2(469, 413)
 
 [node name="Twilight" type="Node"]
 
@@ -97,15 +104,37 @@ script = SubResource("GDScript_clfmc")
 
 [node name="Timer" type="Timer" parent="enemy spawner"]
 
-[node name="checkpoint" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
-position = Vector2(53952, 67)
-shape = SubResource("RectangleShape2D_btojs")
-
-[node name="midnight_background" parent="." instance=ExtResource("5_clfmc")]
+[node name="midnight_backgroundd" parent="." instance=ExtResource("5_clfmc")]
 z_index = -1
+
+[node name="gayPearl" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="gayPearl"]
+position = Vector2(60820.996, -30.999998)
+scale = Vector2(0.69129586, 0.7130435)
+texture = ExtResource("5_vb53u")
+
+[node name="Area2D" type="Area2D" parent="gayPearl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gayPearl/Area2D"]
+position = Vector2(60823, -31)
+shape = SubResource("RectangleShape2D_0r25i")
+
+[node name="Kill zone (top end)" type="Area2D" parent="."]
+position = Vector2(14, -134)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill zone (top end)"]
+position = Vector2(60991, -337)
+shape = SubResource("RectangleShape2D_clfmc")
+
+[node name="Kill zone (bottom end)" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill zone (bottom end)"]
+position = Vector2(61059, 435)
+shape = SubResource("RectangleShape2D_vb53u")
 
 [connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
 [connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
-[connection signal="body_entered" from="checkpoint" to="Player" method="_on_checkpoint_body_entered"]
+[connection signal="body_entered" from="gayPearl/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Kill zone (top end)" to="Player" method="_on_kill_zone_top_end_body_entered"]
+[connection signal="body_entered" from="Kill zone (bottom end)" to="Player" method="_on_kill_zone_bottom_end_body_entered"]

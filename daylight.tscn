@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://3c5u76uoquhs" path="res://scripts/enemie_spawner.tres.gd" id="5_wu3l7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(203, 83)
+size = Vector2(203, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(106995, 221.25)
@@ -40,7 +40,7 @@ scale = Vector2(0.34567767, 0.39638957)
 texture = ExtResource("1_nfg43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(181.5, 58.5)
+position = Vector2(181.5, 51.5)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="kill zone (top)" type="Area2D" parent="."]
