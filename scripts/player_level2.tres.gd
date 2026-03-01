@@ -32,4 +32,5 @@ func _on_checkpoint_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	killPlayer()
-	Global_SCORE.add_score(-5)
+	if Global_SCORE.score > 0:
+			Global_SCORE.add_score(-5)
