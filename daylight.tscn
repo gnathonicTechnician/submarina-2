@@ -81,7 +81,7 @@ script = ExtResource("5_wu3l7")
 [node name="checkpoint" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
-position = Vector2(53952, 67)
+position = Vector2(53873, 67)
 shape = SubResource("RectangleShape2D_btojs")
 
 [connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
