@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://c43fqvvdvbnts"]
+[gd_scene format=3 uid="uid://c43fqvvdvbnts"]
 
 [ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="2_1bvp3"]
@@ -36,7 +36,7 @@ func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 size = Vector2(203, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(107102, 260.5)
+size = Vector2(107424, 260.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(107757, 234)
@@ -70,7 +70,7 @@ texture = ExtResource("2_0xm2m")
 [node name="kill zone (top)" type="Area2D" parent="." unique_id=1907232571]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)" unique_id=983305889]
-position = Vector2(53032, -774)
+position = Vector2(52871, -774)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="kill zone (bottom)" type="Area2D" parent="." unique_id=599682745]
