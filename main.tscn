@@ -1,8 +1,7 @@
-[gd_scene format=3 uid="uid://diorvxu4fenwg"]
+[gd_scene load_steps=7 format=3 uid="uid://diorvxu4fenwg"]
 
 [ext_resource type="Texture2D" uid="uid://2udgh77141xc" path="res://assets/submarine_flip.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://cfi8tvm54bbvc" path="res://assets/hadal_fish.png" id="3_h2yge"]
 
 [sub_resource type="GDScript" id="GDScript_ig7tw"]
 script/source = "extends CharacterBody2D
@@ -42,52 +41,47 @@ size = Vector2(9533.5, 260.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(9649.5, 234)
 
-[node name="Node" type="Node" unique_id=1718745940]
+[node name="Node" type="Node"]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1667086211]
+[node name="Player" type="CharacterBody2D" parent="."]
 script = SubResource("GDScript_ig7tw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1778304063]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(149.00002, 71.000015)
 scale = Vector2(0.4536741, 0.5373444)
 texture = ExtResource("1_ig7tw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=670745162]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(152, 67.25)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1870773623]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(828, 57)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_speed = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669220885]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="GhostLeviathan" type="Sprite2D" parent="." unique_id=584650184]
+[node name="GhostLeviathan" type="Sprite2D" parent="."]
 position = Vector2(674, 237.00009)
 scale = Vector2(0.31166664, 0.337037)
 texture = ExtResource("2_0xm2m")
 
-[node name="kill zone (top)" type="Area2D" parent="." unique_id=937990236]
+[node name="kill zone (top)" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)" unique_id=356982511]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)"]
 position = Vector2(4394.25, -749.75)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="kill zone (bottom)" type="Area2D" parent="." unique_id=290504853]
+[node name="kill zone (bottom)" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)" unique_id=186207031]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)"]
 position = Vector2(4465.25, 808)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="RespawnPoint" type="Node2D" parent="." unique_id=493429572]
+[node name="RespawnPoint" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(154, 72)
-
-[node name="HadalFish" type="Sprite2D" parent="." unique_id=1484712056]
-position = Vector2(-518.75, 330)
-scale = Vector2(0.6769437, 0.792)
-texture = ExtResource("3_h2yge")
 
 [connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
 [connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
