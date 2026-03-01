@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://6ekbeeh06jcm"]
+
+[ext_resource type="Texture2D" uid="uid://deu3m7ruw0dtd" path="res://assets/daylightzone-bg (2).png" id="1_oabld"]
+
+[node name="background" type="Node2D"]
+texture_filter = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+texture_repeat = 2
+repeat_size = Vector2(1400, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 100
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_oabld")
