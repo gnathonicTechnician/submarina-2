@@ -11,11 +11,8 @@ script/source = "extends CharacterBody2D
 const SPEED = 500.0
 
 
-func _process(delta: float) -> void:
-	velocity.x += 5
-	
-	if velocity.x == 50:
-		velocity.x = 50
+func _process(delta: float) -> void:	
+	position.x += 25
 	
 	var direction := Input.get_axis(\"up\", \"down\")
 	if direction:
@@ -39,10 +36,10 @@ func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 size = Vector2(203, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(9749, 260.5)
+size = Vector2(106865, 260.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(9735, 234)
+size = Vector2(107757, 234)
 
 [node name="Node" type="Node"]
 
@@ -73,14 +70,14 @@ texture = ExtResource("2_0xm2m")
 [node name="kill zone (top)" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)"]
-position = Vector2(4516.5, -774)
+position = Vector2(53150.5, -774)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="kill zone (bottom)" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)"]
 z_index = -1
-position = Vector2(4510.5, 874)
+position = Vector2(53521.5, 874)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="RespawnPoint" type="Node2D" parent="."]

@@ -8,8 +8,7 @@ texture_filter = 1
 [node name="Parallax2D" type="Parallax2D" parent="."]
 texture_repeat = 2
 repeat_size = Vector2(1400, 0)
-autoscroll = Vector2(-10, 0)
-repeat_times = 150
+repeat_times = 100
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
