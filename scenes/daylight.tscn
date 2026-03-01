@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://diorvxu4fenwg"]
+
+[ext_resource type="Script" uid="uid://h732yfdoy0uo" path="res://scripts/player.tres.gd" id="1_btojs"]
+[ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="1_nfg43"]
+[ext_resource type="PackedScene" uid="uid://6ekbeeh06jcm" path="res://scenes/background_daylight.tscn" id="4_6q6r2"]
+[ext_resource type="Script" uid="uid://bsrvkwekb1g6w" path="res://scripts/label_txt.tres.gd" id="4_btojs"]
+[ext_resource type="Script" uid="uid://3c5u76uoquhs" path="res://scripts/enemie_spawner.tres.gd" id="5_wu3l7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(203, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(106995, 221.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(107793, 254)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nfg43"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btojs"]
+size = Vector2(196, 1627)
+
+[node name="Daylight" type="Node"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_btojs")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(828, 57)
+zoom = Vector2(0.5, 0.5)
+limit_top = -199
+limit_bottom = 201
+position_smoothing_speed = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(186.25879, 45.064323)
+scale = Vector2(0.34567767, 0.39638957)
+texture = ExtResource("1_nfg43")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(181.5, 58.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="kill zone (top)" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)"]
+position = Vector2(53085.5, -793.625)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="kill zone (bottom)" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (bottom)"]
+z_index = -1
+position = Vector2(53503.5, 864)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="RespawnPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(154, 72)
+
+[node name="background" parent="." instance=ExtResource("4_6q6r2")]
+z_index = -1
+texture_repeat = 2
+position = Vector2(828, 57)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_nfg43")
+script = ExtResource("4_btojs")
+
+[node name="enemy spawner" type="Node2D" parent="."]
+script = ExtResource("5_wu3l7")
+
+[node name="Timer" type="Timer" parent="enemy spawner"]
+
+[node name="checkpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
+position = Vector2(53952, 67)
+shape = SubResource("RectangleShape2D_btojs")
+
+[connection signal="body_entered" from="kill zone (top)" to="Player" method="_on_kill_zone_top_body_entered"]
+[connection signal="body_entered" from="kill zone (bottom)" to="Player" method="_on_kill_zone_bottom_body_entered"]
+[connection signal="body_entered" from="checkpoint" to="Player" method="_on_checkpoint_body_entered"]

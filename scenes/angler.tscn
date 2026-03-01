@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6dx32fr8mpmb"]
 
-[ext_resource type="Script" uid="uid://v8jctqq1blem" path="res://angler_2.gd" id="1_5uyvs"]
+[ext_resource type="Script" uid="uid://v8jctqq1blem" path="res://scripts/angler_2.gd" id="1_5uyvs"]
 [ext_resource type="Texture2D" uid="uid://c7037685sjahb" path="res://assets/SharkAngler-Lvl1-Angt.png" id="2_mx2wu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mx2wu"]

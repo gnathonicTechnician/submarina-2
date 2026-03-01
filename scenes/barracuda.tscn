@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw6nse3dhbco0"]
 
-[ext_resource type="Script" uid="uid://cb080jdncwpyw" path="res://barracuda.tres.gd" id="1_ibudq"]
+[ext_resource type="Script" uid="uid://cb080jdncwpyw" path="res://scripts/barracuda.tres.gd" id="1_ibudq"]
 [ext_resource type="Texture2D" uid="uid://hpgf6kp62jgr" path="res://assets/barracudaswordfih-lvl1fih-points.png" id="1_rpcjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmsxy"]
