@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbck5nfyxjy6p"]
+
+[ext_resource type="Texture2D" uid="uid://dfr3ei3a2cc3l" path="res://assets/starting-screen.png" id="1_ncxyx"]
+
+[sub_resource type="GDScript" id="GDScript_ncxyx"]
+script/source = "extends Node2D
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file(\"res://daylight.tscn\")
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pevhg"]
+
+[node name="Start screen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 333)
+scale = Vector2(0.7792858, 0.47142854)
+texture = ExtResource("1_ncxyx")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = SubResource("GDScript_ncxyx")
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_left = 155.0
+offset_top = 442.0
+offset_right = 907.0
+offset_bottom = 575.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pevhg")
+
+[connection signal="pressed" from="Node2D/Button" to="Node2D" method="_on_button_pressed"]
