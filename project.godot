@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Submarina_2"
-run/main_scene="uid://dxx2m3t6r3xsh"
+run/main_scene="uid://diorvxu4fenwg"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://assets/icon.svg"
 
