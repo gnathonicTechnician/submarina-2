@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://diorvxu4fenwg"]
 
-[ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://6ekbeeh06jcm" path="res://background.tscn" id="2_lquwl"]
-[ext_resource type="Texture2D" uid="uid://cfi8tvm54bbvc" path="res://assets/hadal_fish.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cc3k5cgfuvol4" path="res://assets/submarineahhh-bg.png" id="1_nfg43"]
+[ext_resource type="Texture2D" uid="uid://d3hoic2qeq8cs" path="res://assets/Ghost_Leviathan.webp" id="2_btojs"]
+[ext_resource type="Texture2D" uid="uid://cfi8tvm54bbvc" path="res://assets/hadal_fish.png" id="3_wu3l7"]
+[ext_resource type="PackedScene" uid="uid://6ekbeeh06jcm" path="res://background.tscn" id="4_6q6r2"]
 
 [sub_resource type="GDScript" id="GDScript_ig7tw"]
 script/source = "extends CharacterBody2D
@@ -36,7 +36,7 @@ func _on_kill_zone_bottom_body_entered(body: Node2D) -> void:
 size = Vector2(203, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(106865, 260.5)
+size = Vector2(106911, 260.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(107757, 234)
@@ -56,7 +56,7 @@ position_smoothing_speed = 10.0
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(186.25879, 45.064323)
 scale = Vector2(0.34567767, 0.39638957)
-texture = ExtResource("2_1bvp3")
+texture = ExtResource("1_nfg43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(181.5, 47.5)
@@ -65,12 +65,12 @@ shape = SubResource("RectangleShape2D_0xm2m")
 [node name="GhostLeviathan" type="Sprite2D" parent="."]
 position = Vector2(674, 237.00009)
 scale = Vector2(0.31166664, 0.337037)
-texture = ExtResource("2_0xm2m")
+texture = ExtResource("2_btojs")
 
 [node name="kill zone (top)" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill zone (top)"]
-position = Vector2(53150.5, -774)
+position = Vector2(53127.5, -774)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="kill zone (bottom)" type="Area2D" parent="."]
@@ -87,9 +87,9 @@ position = Vector2(154, 72)
 [node name="HadalFish" type="Sprite2D" parent="."]
 position = Vector2(-445.25, 379)
 scale = Vector2(0.50268096, 0.5439999)
-texture = ExtResource("3_h2yge")
+texture = ExtResource("3_wu3l7")
 
-[node name="background" parent="." instance=ExtResource("2_lquwl")]
+[node name="background" parent="." instance=ExtResource("4_6q6r2")]
 z_index = -1
 texture_repeat = 2
 position = Vector2(828, 57)
