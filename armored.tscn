@@ -23,7 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmsxy"]
-size = Vector2(485, 238)
+size = Vector2(469.5, 206)
 
 [node name="armored" type="CharacterBody2D"]
 script = SubResource("GDScript_nb62k")
@@ -36,7 +36,7 @@ texture = ExtResource("1_rsf20")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(124, -15.875)
+position = Vector2(133, -15)
 shape = SubResource("RectangleShape2D_jmsxy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
